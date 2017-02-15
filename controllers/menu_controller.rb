@@ -14,7 +14,8 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - View Entry Number n"
-    puts "6 - Exit"
+    puts "6 - DELETE F***ING EVERYTHING"
+    puts "7 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -40,6 +41,11 @@ class MenuController
         view_entry_n
         main_menu
       when 6
+        system "clear"
+        puts "Bomb... dropped!"
+        address_book.entries.each { |e| delete_entry(e) }
+        main_menu
+      when 7
         puts "Good-bye!"
         exit(0)
       else
