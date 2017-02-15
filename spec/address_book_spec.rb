@@ -7,7 +7,6 @@ RSpec.describe AddressBook do
     expect(entry.name).to eq expected_name
     expect(entry.phone_number).to eq expected_number
     expect(entry.email).to eq expected_email
-    puts "Name: #{entry.name} - expected: #{expected_name}"
   end
 
   describe "attributes" do
@@ -91,6 +90,21 @@ RSpec.describe AddressBook do
       # Check the fifth entry
       entry_five = book.entries[4]
       check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
+    end
+
+    it "imports the 2nd csv, 1st entry" do
+      book.import_from_csv("entries_2.csv")
+      check_entry(book.entries[0], "Alex", "555-555-1111", "alex@blocmail.com")
+    end
+
+    it "imports the 2nd csv, 2nd entry" do
+      book.import_from_csv("entries_2.csv")
+      check_entry(book.entries[1], "Brant", "555-555-2222", "brant@blocmail.com")
+    end
+
+    it "imports the 2nd csv, 3rd entry" do
+      book.import_from_csv("entries_2.csv")
+      check_entry(book.entries[2], "Chad", "555-555-3333", "chad@blocmail.com")
     end
   end
 end
